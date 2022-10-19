@@ -1,3 +1,9 @@
-<app-list>
-  <app-list-item> </app-list-item>
-</app-list>
+<div class="menu">
+  <a [routerLink]="['home']" routerLinkActive="active">Home</a>&nbsp; |
+  &nbsp;
+  <a [routerLink]="['about']" routerLinkActive="active">About</a>
+  &nbsp; | &nbsp;
+  <a [routerLink]="['feature']" routerLinkActive="active">Feature</a>
+</div>
+
+<router-outlet></router-outlet>

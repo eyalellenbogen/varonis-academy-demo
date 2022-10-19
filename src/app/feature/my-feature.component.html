@@ -1,0 +1,2 @@
+<h1>FEATURE {{ (heroes | async)?.length }}</h1>
+<div class="item" *ngFor="let t of heroes | async">{{ t.name }}</div>

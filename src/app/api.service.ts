@@ -1,19 +1,26 @@
-import { Injectable } from '@angular/core';
-import { delay, of, switchMap, timer } from 'rxjs';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
+import { API_URL_TOKEN } from './tokens';
 
-const arr = [{ name: 'Eyal' }, { name: 'Inbal' }, { name: 'Tal' }];
+export interface Hero {
+  name: string;
+  heroName: string;
+  imageUrl: string;
+}
 
-@Injectable({
-  providedIn: 'root',
-})
+let cnt = 1;
+
+@Injectable()
 export class ApiService {
-  constructor() {}
+  constructor(
+    private httpClient: HttpClient,
+    @Inject(API_URL_TOKEN) private apiUrl: string
+  ) {
+    console.log('--- API service instantiated', cnt++);
+  }
+
   getData() {
-    return timer(1000, 1000).pipe(
-      switchMap(() => {
-        arr.push({ name: 'moshe' + Math.random() });
-        return of([...arr]);
-      })
-    );
+    return this.httpClient.get<Hero[]>(this.apiUrl);
   }
 }

@@ -17,7 +17,6 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'marvel-heroes';
 
-  public items = this.api.getData();
   public someText = 'some text';
 
   constructor(private api: ApiService) {}

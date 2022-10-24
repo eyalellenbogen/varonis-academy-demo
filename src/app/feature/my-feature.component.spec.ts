@@ -18,7 +18,7 @@ const apiMock = {
   },
 };
 
-fdescribe('my component', () => {
+xdescribe('my component', () => {
   let component: MyFeatureComponent;
   let fixture: ComponentFixture<HostComponent>;
   let componentElement: HTMLElement;

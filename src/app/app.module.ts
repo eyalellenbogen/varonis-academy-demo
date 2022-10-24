@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { API_URL_TOKEN, GeneratorService, URL_GENERATOR_TOKEN } from './tokens';
-import { urlFactory } from './url-factory';
 
 @NgModule({
   declarations: [
@@ -25,15 +24,7 @@ import { urlFactory } from './url-factory';
     nullToUndefined,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [
-    ApiService,
-    { provide: URL_GENERATOR_TOKEN, useValue: false },
-    {
-      provide: API_URL_TOKEN,
-      useFactory: urlFactory,
-      deps: [URL_GENERATOR_TOKEN],
-    },
-  ],
+  providers: [ApiService, { provide: URL_GENERATOR_TOKEN, useValue: false }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

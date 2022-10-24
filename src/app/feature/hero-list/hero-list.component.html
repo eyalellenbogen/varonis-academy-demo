@@ -1,0 +1,5 @@
+<h3 class="title">{{ title }}</h3>
+<div class="hero" *ngFor="let hero of heroes" (click)="selectHero(hero)">
+  <i class="icon"></i>
+  <div class="label">{{ hero.name }}</div>
+</div>

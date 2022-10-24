@@ -1,0 +1,9 @@
+:host {
+  padding: 10px;
+  display: block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  > div {
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+  }
+}

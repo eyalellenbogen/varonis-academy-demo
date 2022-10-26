@@ -32,6 +32,6 @@ const routes: Routes = [
     EffectsModule.forFeature([HeroesEffects]),
   ],
   providers: [MyFeatureProducer],
-  declarations: [MyFeatureComponent, HeroListComponent, HeroListComponent],
+  declarations: [MyFeatureComponent, HeroListComponent, HeroListComponent, ],
 })
 export class FeatureModule {}

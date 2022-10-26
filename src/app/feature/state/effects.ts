@@ -6,18 +6,13 @@ import { getHeroesAction, recieveHeroesAction } from './actions';
 
 @Injectable()
 export class HeroesEffects {
-  private o1 = this.api.getData();
-  private o2 = this.api.getData();
-
   public getHeroes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getHeroesAction),
       mergeMap(() => {
-        return combineLatest([this.o1, this.o2]).pipe(
-          map(([heroes, h2]) =>
-            recieveHeroesAction({ heroes: heroes.concat(h2) })
-          )
-        );
+        return this.api
+          .getData()
+          .pipe(map((heroes) => recieveHeroesAction({ heroes })));
       })
     )
   );

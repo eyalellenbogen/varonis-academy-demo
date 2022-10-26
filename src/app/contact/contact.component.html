@@ -1,0 +1,41 @@
+<h3>Contact us (Reactive Form)</h3>
+<form [formGroup]="myForm">
+  <div class="label">Name:</div>
+  <div class="field">
+    <input type="text" formControlName="name" />
+  </div>
+  <div class="label">Email:</div>
+  <div class="field">
+    <input type="text" formControlName="email" />
+  </div>
+  <div class="label">Body:</div>
+  <div class="field">
+    <textarea type="text" formControlName="body"></textarea>
+  </div>
+  <button type="submit" [disabled]="myForm.invalid" (click)="sendForm()">Send</button>
+</form>
+<div class="error" *ngIf="myForm.invalid && myForm.touched">
+  The form is invalid
+</div>
+
+<h3>Contact us (Template Driven)</h3>
+<form #form="ngForm">
+  <div class="label">Name:</div>
+  <div class="field">
+    <input type="text" required noEyal name="name" [(ngModel)]="contact.name" />
+  </div>
+  <div class="label">Email:</div>
+  <div class="field">
+    <input type="text" name="email" [(ngModel)]="contact.email" />
+  </div>
+  <div class="label">Body:</div>
+  <div class="field">
+    <textarea type="text" name="body" [(ngModel)]="contact.body"></textarea>
+  </div>
+  <button type="submit" [disabled]="form.invalid" (click)="sendForm()">Send</button>
+</form>
+<div class="error" *ngIf="form.invalid && form.touched">
+  The form is invalid
+</div>
+
+{{ contact | json }}

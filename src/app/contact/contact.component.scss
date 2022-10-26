@@ -1,0 +1,51 @@
+form {
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.label {
+  font-size: 16px;
+  font-weight: bold;
+}
+.field {
+  margin: 10px 0 20px 0;
+  input,
+  textarea {
+    outline: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    min-width: 300px;
+    font-size: 14px;
+    border: 2px solid #aaa;
+    transition: all 0.2s;
+    &:focus {
+      border-color: rgb(27, 83, 138);
+    }
+  }
+}
+
+button {
+  outline: none;
+  background-color: rgb(27, 83, 138);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover:not(:disabled) {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: inherit;
+  }
+}
+
+.error {
+  margin: 10px 0;
+  background-color: rgb(232, 192, 192);
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 1px solid red;
+}

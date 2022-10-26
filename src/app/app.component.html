@@ -1,9 +1,10 @@
 <div class="menu">
-  <a [routerLink]="['home']" routerLinkActive="active">Home</a>&nbsp; |
-  &nbsp;
-  <a [routerLink]="['about']" routerLinkActive="active">About</a>
+  <a [routerLink]="['home']" routerLinkActive="active">Home</a>&nbsp; | &nbsp;
+  <a [routerLink]="['contact']" routerLinkActive="active">Contact us</a>
   &nbsp; | &nbsp;
   <a [routerLink]="['feature']" routerLinkActive="active">Feature</a>
 </div>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

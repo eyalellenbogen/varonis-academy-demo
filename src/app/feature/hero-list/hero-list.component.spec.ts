@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input, Pipe } from '@angular/core';
 import { Hero } from 'src/app/api.service';
 import { TestContextBuilder } from '@varonis-webcore/web-test-infra/lib/angular-jasmine';
 
 import { HeroListComponent } from './hero-list.component';
 import { HeroListPageObject } from './hero-list.po';
 import { fakeAsync, flush, flushMicrotasks, tick } from '@angular/core/testing';
+
+let prettyInstances: MockPrettyComponent[];
+@Component({
+  selector: 'app-pretty',
+  template: `{{ text }}`,
+})
+class MockPrettyComponent {
+  @Input() text = '';
+
+  constructor() {
+    prettyInstances.push(this);
+  }
+}
 
 @Component({
   template: `<app-hero-list
@@ -21,11 +34,15 @@ class HostComponent {
 
 fdescribe('Hero List', () => {
   const ctx = TestContextBuilder.create(HostComponent)
+    .withMetadata({
+      declarations: [HostComponent, HeroListComponent, MockPrettyComponent],
+    })
     .withComponent(HeroListComponent)
     .withPageObject(HeroListPageObject)
     .build();
 
   beforeEach(() => {
+    prettyInstances = [];
     ctx.bootstrap();
   });
 
@@ -54,6 +71,8 @@ fdescribe('Hero List', () => {
     });
     it('should populate heroes', () => {
       expect(ctx.pageObject.heroes.length).toBe(heroes.length);
+      expect(prettyInstances.length).toBe(heroes.length);
+      expect(prettyInstances[0].text).toBe(heroes[0].name);
     });
     it('should show name', () => {
       expect(ctx.pageObject.heroes[0].label?.innerText).toBe(heroes[0].name);

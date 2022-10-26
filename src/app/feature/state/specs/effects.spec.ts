@@ -20,7 +20,7 @@ const apiMock = {
   },
 };
 
-fdescribe('Effect', () => {
+describe('Effect', () => {
   let effect: HeroesEffects;
   beforeEach(() => {
     TestBed.configureTestingModule({
